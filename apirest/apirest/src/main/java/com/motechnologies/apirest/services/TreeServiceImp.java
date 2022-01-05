@@ -29,7 +29,7 @@ public class TreeServiceImp implements TreeService {
 	public Tree createTree(Tree tree) {
 
 		Node raiz = tree.getNodes().get(0);
-
+		this.tree.setNodes(new ArrayList<Node>());
 		this.tree.getNodes().add(raiz);
 
 		int cont = 0;
@@ -99,12 +99,11 @@ public class TreeServiceImp implements TreeService {
 		if (tree != null) {
 			Tree tree1 = createTree(tree);
 			System.out.println("tree:" + tree1.getId());
-			//Tree tree2 = tree1;
-			//tree2.setNodes(new ArrayList<Node>());
+			System.out.println("tree: node:"+ tree1.getNodes().get(1).getKey()+" parent:"+ tree1.getNodes().get(1).getParent().getKey());
 			treeRepository.save(tree1);
 			for (Node node : tree1.getNodes()) {
-				node.setTree(tree1);
-				nodeRepository.save(node);
+				//node.setTree(tree1);
+				//nodeRepository.save(node);
 				System.out.println("Node"+node.getKey());
 				if(node.getParent()!=null)
 					System.out.println("Parent:"+node.getParent().getKey());

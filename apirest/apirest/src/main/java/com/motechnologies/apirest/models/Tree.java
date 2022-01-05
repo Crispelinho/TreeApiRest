@@ -24,7 +24,7 @@ public class Tree {
     
 	@JsonManagedReference
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "tree",fetch = FetchType.LAZY)
-    private List<Node> nodes = new ArrayList<Node>();
+    private List<Node> nodes;
     
     public Tree() {
 	}
