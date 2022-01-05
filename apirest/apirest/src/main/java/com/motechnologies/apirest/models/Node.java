@@ -11,8 +11,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name = "NODES")
+
 public class Node {
     @Id
     @GeneratedValue
@@ -20,19 +23,20 @@ public class Node {
     private Integer id;
     @Column(name = "key")
     private Integer key;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "parent", referencedColumnName="ID",nullable = true)
     private Node parent;
-    @OneToOne(mappedBy = "parent",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToOne(mappedBy = "parent",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "left", referencedColumnName="ID", nullable = true)
     private Node left;
-    @OneToOne(mappedBy = "parent",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToOne(mappedBy = "parent",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "right", referencedColumnName="ID", nullable = true)
     private Node right;
     @Column(name = "isRoot", nullable = true)
     private Boolean isRoot;
+	@JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "tree_id")
+    @JoinColumn(name = "tree_id", nullable = true)
     private Tree tree;
     @Column(name = "content")
     private String content;

@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name = "TREES")
 public class Tree {
@@ -20,7 +22,8 @@ public class Tree {
     @Column(name = "ID")
     private Integer id; 
     
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "tree",fetch = FetchType.EAGER)
+	@JsonManagedReference
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "tree",fetch = FetchType.LAZY)
     private List<Node> nodes = new ArrayList<Node>();
     
     public Tree() {

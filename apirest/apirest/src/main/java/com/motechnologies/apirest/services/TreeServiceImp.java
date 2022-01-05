@@ -1,5 +1,6 @@
 package com.motechnologies.apirest.services;
 
+import java.util.ArrayList;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +36,6 @@ public class TreeServiceImp implements TreeService {
 		for (Node node : tree.getNodes()) {
 			if (cont != 0)
 				insertNode(node);
-			//nodeRepository.save(node);
 			cont++;
 		}
 
@@ -43,8 +43,7 @@ public class TreeServiceImp implements TreeService {
 		System.out.println("*************************************");
 		System.out.println("*************************************");
 		System.out.println("*************************************");
-		// recorrer(this.tree.getNodes().get(0));
-
+		//recorrer(this.tree.getNodes().get(0));
 		return tree;
 
 	}
@@ -99,8 +98,18 @@ public class TreeServiceImp implements TreeService {
 	public Tree save(Tree tree) {
 		if (tree != null) {
 			Tree tree1 = createTree(tree);
-			System.out.println("tree:" + tree1);
-			return treeRepository.save(tree1);
+			System.out.println("tree:" + tree1.getId());
+			//Tree tree2 = tree1;
+			//tree2.setNodes(new ArrayList<Node>());
+			treeRepository.save(tree1);
+			for (Node node : tree1.getNodes()) {
+				node.setTree(tree1);
+				nodeRepository.save(node);
+				System.out.println("Node"+node.getKey());
+				if(node.getParent()!=null)
+					System.out.println("Parent:"+node.getParent().getKey());
+			}
+			return null;
 		}
 		return new Tree();
 	}
