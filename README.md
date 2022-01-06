@@ -2,7 +2,7 @@
 
 Proyecto Gradle
 
-Aplicación desarrollada en el framwwork Spring Boot implementando el patrón de diseño de repositorio, dándole al proyecto la siguiente estructura:
+Aplicación desarrollada con el framework Spring Boot implementando el patrón de diseño de repositorio, dándole al proyecto la siguiente estructura:
 
 ```bash
 ├── ApiRest/
@@ -23,7 +23,7 @@ Aplicación desarrollada en el framwwork Spring Boot implementando el patrón de
 └── ApirestApplication.java
 ```
 
-Para implementar un servicio que permitiera la creación de un árbol se implmentaron los modelos Tree y Node, los cuáles contienen la siguiente estructura:
+Para implementar un servicio que permitiera la creación de un árbol se implementaron los modelos Tree y Node, los cuáles contienen la siguiente estructura:
 
 ```bash
 ├── Tree
