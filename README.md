@@ -7,9 +7,7 @@ Aplicación desarrollada en el framwwork Spring Boot implementando el patrón de
 ApiRest/
 
 ..Models/
-
 ....Tree.java
-
 ....Node.java
 
 ..Controllers/
@@ -71,10 +69,10 @@ Este proyecto fue generado con Spring Boot y Gradle
 Dirigirse a la carpeta del proyecto y ejecutar el siguiente comando:
 
 ### Windows
-```gradlew clean build```
+> ```gradlew clean build```
   
 ### Linux and Mac
-> cd apirest
+> ```cd apirest```
 >  
 > ```foo@bar:~$ gradlew clean build```
   
