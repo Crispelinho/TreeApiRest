@@ -64,9 +64,51 @@ Desde Visual Studio Code dirigirse a la clase ApirestApplication y darle run al 
 
 ![image](https://user-images.githubusercontent.com/23733231/148381022-4305c745-d3ad-4d97-9639-11cbe4b55118.png)
 
+#### Pruebas
+
+Desde Postman podemos al endpoint http://localhost:8080/tree/ el siguiente request en formato JSON:
+
 ```json
-{ "some": "json" }
+{   
+    "nodes": [
+        {
+            "key": 9,
+            "content": "Prueba9"
+        },
+        {
+            "key": 1,
+            "content": "Prueba1"
+        },
+        {
+            "key": 5,
+            "content": "Prueba5"
+        },
+                {
+            "key": 6,
+            "content": "Prueba6"
+        }
+        ,
+                {
+            "key": 11,
+            "content": "Prueba11"
+        }
+        ,
+                {
+            "key": 2,
+            "content": "Prueba2"
+        }
+        ,
+                {
+            "key": 8,
+            "content": "Prueba8"
+        }
+    ]
+}
 ```
+
+![image](https://user-images.githubusercontent.com/23733231/148381381-03f1ff45-18e7-442e-8bec-9a74d6bdb516.png)
+
+
 
 
 
