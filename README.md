@@ -64,7 +64,7 @@ Desde Visual Studio Code dirigirse a la clase ApirestApplication y darle run al 
 
 ![image](https://user-images.githubusercontent.com/23733231/148381022-4305c745-d3ad-4d97-9639-11cbe4b55118.png)
 
-```javascript
+```json
 { "some": "json" }
 ```
 
