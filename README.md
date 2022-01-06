@@ -4,62 +4,42 @@ Proyecto Gradle
 
 Aplicación desarrollada en el framwwork Spring Boot implementando el patrón de diseño de repositorio, dándole al proyecto la siguiente estructura:
 
-ApiRest/
-
-..Models/
-
-....Tree.java
-
-....Node.java
-
-..Controllers/
-
-....TreeController
-
-....NodeController
-
-..Services/
-
-....TreeService
-
-....NodeService
-
-....TreeServiceImp
-
-....NodeServiceImp
-
-..Repository/
-
-....TreeRepository
-
-....NodeRepository
+```bash
+├── ApiRest/
+│   ├── Models/
+│   │   ├── Tree.java
+|   |   ├── Node.java
+│   ├── Controllers/
+│   │   ├── TreeController.java
+|   |   ├── NodeController.java
+│   ├── Services/
+│   │   ├── TreeService.java
+|   |   ├── NodeService.java
+│   │   ├── TreeServiceImp.java
+|   |   ├── NodeServiceImp.java
+│   ├── Repositorys/
+│   │   ├── TreeRepository.java
+|   |   ├── NodeRepository.java
+└── ApirestApplication.java
+```
 
 Para implementar un servicio que permitiera la creación de un árbol se implmentaron los modelos Tree y Node, los cuáles contienen la siguiente estructura:
 
-Tree/
-
-..Integer Id
-
-..List<Nodes>
-  
-Node/
-
-..Integer Id
-
-..Integer key
-
-..String content
-
-....Node parent
-
-....Node left
-
-....Node rigth
-
-.... Tree tree
-
-.... Boolean isRoot
-
+```bash
+├── Tree
+│   ├── id (Integer)
+│   ├── nodes (List<Node>)
+├── Node
+│   ├── id (Integer)
+│   ├── key (Integer)
+│   ├── content (Integer)
+│   ├── parent (Integer)
+│   ├── left (Integer)
+│   ├── rigth (Integer)
+│   ├── tree (Tree)
+│   ├── isRoot (Boolean)
+└── ApirestApplication.java
+```
   
 Se construyeron dos controladores para crear los servicios REST correspondientes a los modelos Tree y Node, y sus services dónde se implementó toda la lógica de construcción del árbol a nivel de base de datos a través de los repositorios.
 
@@ -77,24 +57,3 @@ Dirigirse a la carpeta del proyecto y ejecutar el siguiente comando:
 > ```cd apirest```
 >  
 > ```foo@bar:~$ gradlew clean build```
-  
-```bash
-├── app
-│   ├── css
-│   │   ├── **/*.css
-│   ├── favicon.ico
-│   ├── images
-│   ├── index.html
-│   ├── js
-│   │   ├── **/*.js
-│   └── partials/template
-├── dist (or build)
-├── node_modules
-├── bower_components (if using bower)
-├── test
-├── Gruntfile.js/gulpfile.js
-├── README.md
-├── package.json
-├── bower.json (if using bower)
-└── .gitignore
-```
