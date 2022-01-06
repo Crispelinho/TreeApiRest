@@ -27,18 +27,17 @@ Para implementar un servicio que permitiera la creación de un árbol se implmen
 
 ```bash
 ├── Tree
-│   ├── id (Integer)
-│   ├── nodes (List<Node>)
+    ├── id (Integer)
+    ├── nodes (List<Node>)
 ├── Node
-│   ├── id (Integer)
-│   ├── key (Integer)
-│   ├── content (Integer)
-│   ├── parent (Integer)
-│   ├── left (Integer)
-│   ├── rigth (Integer)
-│   ├── tree (Tree)
-│   ├── isRoot (Boolean)
-└── ApirestApplication.java
+    ├── id (Integer)
+    ├── key (Integer)
+    ├── content (Integer)
+    ├── parent (Integer)
+    ├── left (Integer)
+    ├── rigth (Integer)
+    ├── tree (Tree)
+    ├── isRoot (Boolean)
 ```
   
 Se construyeron dos controladores para crear los servicios REST correspondientes a los modelos Tree y Node, y sus services dónde se implementó toda la lógica de construcción del árbol a nivel de base de datos a través de los repositorios.
