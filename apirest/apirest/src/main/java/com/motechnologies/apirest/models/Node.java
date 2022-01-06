@@ -10,6 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -24,16 +25,18 @@ public class Node {
     private Integer id;
     @Column(name = "key")
     private Integer key;
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "parent", referencedColumnName="ID",nullable = true)
     private Node parent;
+	@Transient
 	@JsonIgnore
-    @OneToOne(mappedBy = "parent",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "left", referencedColumnName="ID", nullable = true)
+    // @OneToOne(mappedBy = "parent",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    // @JoinColumn(name = "left", referencedColumnName="ID", nullable = true)
     private Node left;
+	@Transient
 	@JsonIgnore
-    @OneToOne(mappedBy = "parent",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "right", referencedColumnName="ID", nullable = true)
+    // @OneToOne(mappedBy = "parent",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    // @JoinColumn(name = "right", referencedColumnName="ID", nullable = true)
     private Node right;
     @Column(name = "isRoot", nullable = true)
     private Boolean isRoot;

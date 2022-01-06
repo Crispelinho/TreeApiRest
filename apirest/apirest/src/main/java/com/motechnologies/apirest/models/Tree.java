@@ -23,7 +23,7 @@ public class Tree {
     private Integer id; 
     
 	@JsonManagedReference
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "tree",fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "tree",fetch = FetchType.EAGER,orphanRemoval = true)
     private List<Node> nodes;
     
     public Tree() {
