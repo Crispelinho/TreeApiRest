@@ -50,10 +50,24 @@ Este proyecto fue generado con Spring Boot y Gradle
   
 Dirigirse a la carpeta del proyecto y ejecutar el siguiente comando:
 
-### Windows
+### Compilación del proyecto
+#### Windows
 > ```gradlew clean build```
   
-### Linux and Mac
+#### Linux and Mac
 > ```cd apirest```
 >  
 > ```foo@bar:~$ gradlew clean build```
+
+#### Ejecución de la aplicación con Gradle
+Desde Visual Studio Code dirigirse a la clase ApirestApplication y darle run al proyecto.
+
+![image](https://user-images.githubusercontent.com/23733231/148381022-4305c745-d3ad-4d97-9639-11cbe4b55118.png)
+
+```javascript
+{ "some": "json" }
+```
+
+
+
+
