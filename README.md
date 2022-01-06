@@ -138,6 +138,6 @@ Verificación de datos en H2
 
 Se puede apreciar que el objeto correspondiente al Arbol y sus Nodos son mapeados correctamente y así se verifican en la BD.
 
-Se presenta problemas con Spring Boot al momento de hacer relaciones recursivas, los atributos de la clase Node, left y rigth son columnas que se relaciones con la misma tabla (Node) con un tipo de relación 1 a 1, por lo tanto, en Spring se hace uso de la anotación OneToOne, la cuál no permite eliminar la recursividad en los objetos al ser serializados, por lo tanto, la respuesta del servicio para creación de un árbol es null y el árbol se pinta por consola para verificar su creación.
+Se presenta problemas con Spring Boot al momento de hacer relaciones recursivas, los atributos de la clase Node, left y rigth son columnas que se relaciones con la misma tabla (Node) con un tipo de relación 1 a 1, por lo tanto, en Spring se hace uso de la anotación OneToOne, la cuál no permite eliminar la recursividad en los objetos al ser serializados, por lo tanto, se pinta por consola para verificar su creación.
 
-El tipo de relación 1 a 1 con la misma tabla no permite crear las columnas a nivel de base de datos.
+El tipo de relación 1 a 1 con la misma tabla no permite crear las columnas a nivel de base de datos, por lo tanto, los atributos left y right se enmarcan bajo la eqtiqueta @Transient para ser omitidos en la capa de persistencia y evite problemas de duplicidad de registros al momento de consultar un arbol, de igual forma se utiliza la anotación @JsonIgnore para eliminar la recursividad infinita al momento de consultar un nodo.
