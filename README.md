@@ -140,6 +140,4 @@ Se presenta problemas con Spring Boot al momento de hacer relaciones recursivas,
 
 El tipo de relación 1 a 1 con la misma tabla no permite crear las columnas a nivel de base de datos.
 
-A pesar de que el objeto Arbol imprime su id y su conjunto de nodos con la información correcta, el campo parents se ve afectado al momento de realizar la inserción.
-
-
+Se puede apreciar que el objeto correspondiente al Arbol y sus Nodos son mapeados correctamente y así se verifican en la BD.
