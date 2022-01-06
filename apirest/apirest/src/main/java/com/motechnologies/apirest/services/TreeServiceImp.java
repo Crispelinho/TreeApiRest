@@ -131,12 +131,13 @@ public class TreeServiceImp implements TreeService {
 
 
 	@Override
-	public void LowestCommonAncestor(Integer idTree, Integer nodekey1, Integer nodekey2) {
-		
+	public Node LowestCommonAncestor(Integer idTree, Integer nodekey1, Integer nodekey2) {
+		System.out.println("idTree:"+idTree);
 		Optional<Tree> tree = this.treeRepository.findById(idTree);
-		System.out.println(tree.get().getId());
-		// TODO Auto-generated method stub
-		
+		if (tree.isPresent()) {
+			System.out.println("tree:"+tree.get().getId());
+		}	
+		return new Node();
 	}
 
 }

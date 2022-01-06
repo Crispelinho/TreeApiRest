@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -42,10 +43,9 @@ public class TreeController {
     }
 
     @PostMapping("tree/LowestCommonAncestor/")
-    public Node LowestCommonAncestor(Integer id, Integer key1, Integer key2 ) {
-        this.treeService.LowestCommonAncestor(id,key1,key2);
+    public Node LowestCommonAncestor(@RequestParam(value = "id") Integer id, @RequestParam(value = "key1") Integer key1, @RequestParam(value = "key2") Integer key2 ) {
         System.out.println("Entro LowestCommonAncestor");
-		return new Node();
+		    return this.treeService.LowestCommonAncestor(id,key1,key2);
     }
 
     
