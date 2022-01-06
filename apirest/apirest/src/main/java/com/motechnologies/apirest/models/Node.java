@@ -12,6 +12,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "NODES")
@@ -26,9 +27,11 @@ public class Node {
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "parent", referencedColumnName="ID",nullable = true)
     private Node parent;
+	@JsonIgnore
     @OneToOne(mappedBy = "parent",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "left", referencedColumnName="ID", nullable = true)
     private Node left;
+	@JsonIgnore
     @OneToOne(mappedBy = "parent",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "right", referencedColumnName="ID", nullable = true)
     private Node right;

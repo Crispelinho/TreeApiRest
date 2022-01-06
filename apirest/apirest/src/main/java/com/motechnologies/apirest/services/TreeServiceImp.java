@@ -1,6 +1,7 @@
 package com.motechnologies.apirest.services;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -108,7 +109,7 @@ public class TreeServiceImp implements TreeService {
 				if(node.getParent()!=null)
 					System.out.println("Parent:"+node.getParent().getKey());
 			}
-			return null;
+			return tree;
 		}
 		return new Tree();
 	}
@@ -120,5 +121,22 @@ public class TreeServiceImp implements TreeService {
 		Optional<Tree> tree = treeRepository.findById(id);
 		return tree;
 	} 
+
+	@Override
+	public List<Tree> findAll() {
+		List<Tree> tree = treeRepository.findAll();
+		return tree;
+	}
+
+
+
+	@Override
+	public void LowestCommonAncestor(Integer idTree, Integer nodekey1, Integer nodekey2) {
+		
+		Optional<Tree> tree = this.treeRepository.findById(idTree);
+		System.out.println(tree.get().getId());
+		// TODO Auto-generated method stub
+		
+	}
 
 }
