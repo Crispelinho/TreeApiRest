@@ -106,8 +106,16 @@ Desde Postman podemos al endpoint http://localhost:8080/tree/ el siguiente reque
 }
 ```
 
+Representación del árbol
+
+![image](https://user-images.githubusercontent.com/23733231/148383048-367649ba-2a26-4710-8603-ab8461001710.png)
+
+
 ![image](https://user-images.githubusercontent.com/23733231/148381381-03f1ff45-18e7-442e-8bec-9a74d6bdb516.png)
 
+El resultado de la prueba es el siguiente:
+
+![image](https://user-images.githubusercontent.com/23733231/148381729-1637f1b5-382b-4342-861f-17b703eef15b.png)
 
 
 
