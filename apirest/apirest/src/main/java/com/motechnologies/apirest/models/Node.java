@@ -47,6 +47,12 @@ public class Node {
     @Column(name = "content")
     private String content;
 
+    @Column(name = "nodeLeft")
+    private Integer nodeLeft;
+
+	@Column(name = "nodeRight")
+    private Integer nodeRight;	
+
     public Integer getId() {
 		return id;
 	}
@@ -95,4 +101,20 @@ public class Node {
 	public void setContent(String content) {
 		this.content = content;
 	}
+	public Integer getNodeLeft() {
+		return nodeLeft;
+	}
+
+	public void setNodeLeft(Integer nodeLeft) {
+		this.nodeLeft = nodeLeft;
+	}
+
+	public Integer getNodeRight() {
+		return nodeRight;
+	}
+
+	public void setNodeRight(Integer nodeRight) {
+		this.nodeRight = nodeRight;
+	}
+	
 }

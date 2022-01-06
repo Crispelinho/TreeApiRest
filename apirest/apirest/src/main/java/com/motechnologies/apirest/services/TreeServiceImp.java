@@ -40,11 +40,11 @@ public class TreeServiceImp implements TreeService {
 			cont++;
 		}
 
-		recorrer(root);
+		walktree(root);
 		System.out.println("*************************************");
 		System.out.println("*************************************");
 		System.out.println("*************************************");
-		//recorrer(this.tree.getNodes().get(0));
+		//walktree(this.tree.getNodes().get(0));
 		return tree;
 
 	}
@@ -74,22 +74,24 @@ public class TreeServiceImp implements TreeService {
 
 		if (node.getKey() < node.getParent().getKey()) {
 			node.getParent().setLeft(node);
+			node.getParent().setNodeLeft(node.getKey());
 		} else
 			node.getParent().setRight(node);
+			node.getParent().setNodeRight(node.getKey());
 		System.out.println("----------------------------");
 	}
 
      
     
-	public void recorrer(Node n) {
-		System.out.println("----------RECORRER-------------");
+	public void walktree(Node n) {
+		System.out.println("----------WALKTREE-------------");
 		System.out.println("Recorriendo:" + n);
 		if (n != null) {
-			recorrer(n.getLeft());
+			walktree(n.getLeft());
 			System.out.println("node:" + n.getKey());
 			if (n.getParent() != null)
 				System.out.println("nodeParent: " + n.getParent().getKey());
-			recorrer(n.getRight());
+			walktree(n.getRight());
 		}
 		System.out.println("+++++++++++++++++++++++++++++++++++++-");
 	}
@@ -115,7 +117,6 @@ public class TreeServiceImp implements TreeService {
 	}
 
  	@Override
-
 	public Optional<Tree> findById(Integer id) {
 
 		Optional<Tree> tree = treeRepository.findById(id);
@@ -136,39 +137,48 @@ public class TreeServiceImp implements TreeService {
 		Optional<Tree> optionalTree = this.treeRepository.findById(idTree);
 		if (optionalTree.isPresent()) {
 			Tree tree = optionalTree.get();
+			this.tree = tree;
 			System.out.println("tree:"+tree.getId());
 			Node root = tree.getNodes().get(0);
-			Node p = searchNodeInTreeById(tree,nodeKey1);
-			Node q = searchNodeInTreeById(tree,nodeKey2);
+			Node p = searchNodeInTreeById(nodeKey1);
+			Node q = searchNodeInTreeById(nodeKey2);
+			
 			return lowestCommonAncestor(root, p, q);
 		}	
 		return new Node();
 	}
 
 	public Node lowestCommonAncestor(Node root, Node p, Node q){
-		if(root.getKey()==p.getKey() || root.getKey()==q.getKey()){
-			return root;
-		  }
-  
-		  Node leftTree=lowestCommonAncestor(root.getLeft(),p,q);
-		  Node rightTree=lowestCommonAncestor(root.getRight(),p,q);
-  
-		  if(leftTree!=null && rightTree!=null){
-			  return root;
-		  }
-  
-		  if(leftTree !=null){
-			  return leftTree;
-		  }
-  
-		  if(rightTree !=null){
-			  return rightTree;
-		  }
+		System.out.println("-----------------------------------------");
+		System.out.println(root+":"+p+":"+q);
+		if(root != null) 
+		{
+			System.out.println(root.getKey()+":"+p.getKey()+":"+q.getKey());
+			if(root.getKey()==p.getKey() || root.getKey()==q.getKey()){
+				return root;
+			  }
+	  
+			  Node leftTree=lowestCommonAncestor(searchNodeInTreeById(root.getNodeLeft()),p,q);
+			  Node rightTree=lowestCommonAncestor(searchNodeInTreeById(root.getNodeRight()),p,q);
+	  
+			  if(leftTree!=null && rightTree!=null){
+				  return root;
+			  }
+	  
+			  if(leftTree !=null){
+				  return leftTree;
+			  }
+	  
+			  if(rightTree !=null){
+				  return rightTree;
+			  }
+		}
+		
 		  return null;
 	}
 
-	public Node searchNodeInTreeById(Tree tree, Integer nodeKey){
-		for (Node node : tree.getNodes()) {
+	public Node searchNodeInTreeById(Integer nodeKey){
+		for (Node node : this.tree.getNodes()) {
 			if(node.getKey() == nodeKey) return node;
 		}
 		return null;
