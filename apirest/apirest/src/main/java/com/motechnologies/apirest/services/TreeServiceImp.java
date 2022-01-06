@@ -29,9 +29,9 @@ public class TreeServiceImp implements TreeService {
  
 	public Tree createTree(Tree tree) {
 
-		Node raiz = tree.getNodes().get(0);
+		Node root = tree.getNodes().get(0);
 		this.tree.setNodes(new ArrayList<Node>());
-		this.tree.getNodes().add(raiz);
+		this.tree.getNodes().add(root);
 
 		int cont = 0;
 		for (Node node : tree.getNodes()) {
@@ -40,7 +40,7 @@ public class TreeServiceImp implements TreeService {
 			cont++;
 		}
 
-		recorrer(raiz);
+		recorrer(root);
 		System.out.println("*************************************");
 		System.out.println("*************************************");
 		System.out.println("*************************************");
@@ -131,13 +131,47 @@ public class TreeServiceImp implements TreeService {
 
 
 	@Override
-	public Node LowestCommonAncestor(Integer idTree, Integer nodekey1, Integer nodekey2) {
+	public Node searchLowestCommonAncestor(Integer idTree, Integer nodeKey1, Integer nodeKey2) {
 		System.out.println("idTree:"+idTree);
-		Optional<Tree> tree = this.treeRepository.findById(idTree);
-		if (tree.isPresent()) {
-			System.out.println("tree:"+tree.get().getId());
+		Optional<Tree> optionalTree = this.treeRepository.findById(idTree);
+		if (optionalTree.isPresent()) {
+			Tree tree = optionalTree.get();
+			System.out.println("tree:"+tree.getId());
+			Node root = tree.getNodes().get(0);
+			Node p = searchNodeInTreeById(tree,nodeKey1);
+			Node q = searchNodeInTreeById(tree,nodeKey2);
+			return lowestCommonAncestor(root, p, q);
 		}	
 		return new Node();
+	}
+
+	public Node lowestCommonAncestor(Node root, Node p, Node q){
+		if(root.getKey()==p.getKey() || root.getKey()==q.getKey()){
+			return root;
+		  }
+  
+		  Node leftTree=lowestCommonAncestor(root.getLeft(),p,q);
+		  Node rightTree=lowestCommonAncestor(root.getRight(),p,q);
+  
+		  if(leftTree!=null && rightTree!=null){
+			  return root;
+		  }
+  
+		  if(leftTree !=null){
+			  return leftTree;
+		  }
+  
+		  if(rightTree !=null){
+			  return rightTree;
+		  }
+		  return null;
+	}
+
+	public Node searchNodeInTreeById(Tree tree, Integer nodeKey){
+		for (Node node : tree.getNodes()) {
+			if(node.getKey() == nodeKey) return node;
+		}
+		return null;
 	}
 
 }

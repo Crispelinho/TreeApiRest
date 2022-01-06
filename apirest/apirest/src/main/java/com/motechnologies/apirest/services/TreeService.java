@@ -13,6 +13,6 @@ public interface TreeService {
     
     public List<Tree> findAll();
 
-    public Node LowestCommonAncestor(Integer id, Integer key1, Integer key2);
+    public Node searchLowestCommonAncestor(Integer id, Integer key1, Integer key2);
 
 }

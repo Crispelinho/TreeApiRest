@@ -42,10 +42,12 @@ public class TreeController {
 		return this.treeService.findAll();
     }
 
-    @PostMapping("tree/LowestCommonAncestor/")
-    public Node LowestCommonAncestor(@RequestParam(value = "id") Integer id, @RequestParam(value = "key1") Integer key1, @RequestParam(value = "key2") Integer key2 ) {
+    @PostMapping("tree/lowestCommonAncestor/")
+    public Node lowestCommonAncestor(@RequestParam(value = "id") Integer id, @RequestParam(value = "key1") Integer key1, @RequestParam(value = "key2") Integer key2 ) {
         System.out.println("Entro LowestCommonAncestor");
-		    return this.treeService.LowestCommonAncestor(id,key1,key2);
+        Node node = this.treeService.searchLowestCommonAncestor(id,key1,key2);
+        if (node!=null) System.out.println(node.getKey());
+		    return node;
     }
 
     
