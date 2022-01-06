@@ -7,7 +7,9 @@ Aplicación desarrollada en el framwwork Spring Boot implementando el patrón de
 ApiRest/
 
 ..Models/
+
 ....Tree.java
+
 ....Node.java
 
 ..Controllers/
@@ -76,3 +78,4 @@ Dirigirse a la carpeta del proyecto y ejecutar el siguiente comando:
 >  
 > ```foo@bar:~$ gradlew clean build```
   
+$ tree
