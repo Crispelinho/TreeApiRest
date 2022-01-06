@@ -62,3 +62,19 @@ Node/
 
   
 Se construyeron dos controladores para crear los servicios REST correspondientes a los modelos Tree y Node, y sus services dónde se implementó toda la lógica de construcción del árbol a nivel de base de datos a través de los repositorios.
+
+## Bases
+Este proyecto fue generado con Spring Boot y Gradle
+  
+## Instalación para prueba local
+  
+Dirigirse a la carpeta del proyecto y ejecutar el siguiente comando:
+
+### Windows
+```gradlew clean build```
+  
+### Linux and Mac
+> cd apirest
+>  
+> ```foo@bar:~$ gradlew clean build```
+  
