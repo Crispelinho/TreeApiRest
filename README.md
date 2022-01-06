@@ -44,7 +44,7 @@ Para implementar un servicio que permitiera la creación de un árbol se implmen
 Se construyeron dos controladores para crear los servicios REST correspondientes a los modelos Tree y Node, y sus services dónde se implementó toda la lógica de construcción del árbol a nivel de base de datos a través de los repositorios.
 
 ## Bases
-Este proyecto fue generado con Spring Boot y Gradle
+Este proyecto fue generado con Spring Boot y Gradle, como motor de persistencia de datos se usó H2.
   
 ## Instalación para prueba local
   
@@ -66,7 +66,9 @@ Desde Visual Studio Code dirigirse a la clase ApirestApplication y darle run al 
 
 #### Pruebas
 
-Desde Postman podemos al endpoint http://localhost:8080/tree/ el siguiente request en formato JSON:
+##### Servicio para creación de árbol
+
+Desde Postman podemos enviar al endpoint http://localhost:8080/tree/ el siguiente request en formato JSON:
 
 ```json
 {   
@@ -110,6 +112,7 @@ Representación del árbol
 
 ![image](https://user-images.githubusercontent.com/23733231/148383048-367649ba-2a26-4710-8603-ab8461001710.png)
 
+Prueba desde postman
 
 ![image](https://user-images.githubusercontent.com/23733231/148381381-03f1ff45-18e7-442e-8bec-9a74d6bdb516.png)
 
@@ -117,7 +120,27 @@ El resultado de la prueba es el siguiente:
 
 ![image](https://user-images.githubusercontent.com/23733231/148381729-1637f1b5-382b-4342-861f-17b703eef15b.png)
 
+#### Revisión en la consola de H2
 
+Inicio de sesión en H2
 
+  user: sa
+  pass: 
+
+![image](https://user-images.githubusercontent.com/23733231/148383881-7b110c60-c888-4bdc-bf00-54ae3c3f9fc7.png)
+
+Verificación de datos en H2
+
+![image](https://user-images.githubusercontent.com/23733231/148384257-c32e2d39-fb54-4b1c-bb0b-0991785d3b7e.png)
+
+![image](https://user-images.githubusercontent.com/23733231/148384189-61d73124-54cd-4722-a7bd-49cab4840007.png)
+
+### Problemas y conclusiones
+
+Se presenta problemas con Spring Boot al momento de hacer relaciones recursivas, los atributos de la clase Node, left y rigth son columnas que se relaciones con la misma tabla (Node) con un tipo de relación 1 a 1, por lo tanto, en Spring se hace uso de la anotación OneToOne, la cuál no permite eliminar la recursividad en los objetos al ser serializados, por lo tanto, la respuesta del servicio para creación de un árbol es null y el árbol se pinta por consola para verificar su creación.
+
+El tipo de relación 1 a 1 con la misma tabla no permite crear las columnas a nivel de base de datos.
+
+A pesar de que el objeto Arbol imprime su id y su conjunto de nodos con la información correcta, el campo parents se ve afectado al momento de realizar la inserción.
 
 
