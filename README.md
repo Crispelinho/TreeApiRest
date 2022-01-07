@@ -34,8 +34,10 @@ Para implementar un servicio que permitiera la creación de un árbol se impleme
     ├── key (Integer)
     ├── content (Integer)
     ├── parent (Integer)
-    ├── left (Integer)
-    ├── rigth (Integer)
+    ├── leftNode (Node)
+    ├── rigthNode (Node)
+    ├── leftKey (Integer)
+    ├── rigthKey (Integer)    
     ├── tree (Tree)
     ├── isRoot (Boolean)
 ```
