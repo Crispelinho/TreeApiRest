@@ -61,10 +61,10 @@ public class TreeServiceImp implements TreeService {
 			node.setParent(aux);
 			System.out.println("parent:" + node.getParent().getKey());
 			if (node.getKey() >= aux.getKey()) {
-				aux = aux.getRight();
+				aux = aux.getRightNode();
 				System.out.println("Derecha");
 			} else {
-				aux = aux.getLeft();
+				aux = aux.getLeftNode();
 				System.out.println("Izquierda");
 			}
 			if (cont != 0)
@@ -73,11 +73,11 @@ public class TreeServiceImp implements TreeService {
 		}
 
 		if (node.getKey() < node.getParent().getKey()) {
-			node.getParent().setLeft(node);
-			node.getParent().setNodeLeft(node.getKey());
+			node.getParent().setLeftNode(node);
+			node.getParent().setLeftKey(node.getKey());
 		} else
-			node.getParent().setRight(node);
-			node.getParent().setNodeRight(node.getKey());
+			node.getParent().setRightNode(node);
+			node.getParent().setRightKey(node.getKey());
 		System.out.println("----------------------------");
 	}
 
@@ -87,11 +87,11 @@ public class TreeServiceImp implements TreeService {
 		System.out.println("----------WALKTREE-------------");
 		System.out.println("Recorriendo:" + n);
 		if (n != null) {
-			walktree(n.getLeft());
+			walktree(n.getLeftNode());
 			System.out.println("node:" + n.getKey());
 			if (n.getParent() != null)
 				System.out.println("nodeParent: " + n.getParent().getKey());
-			walktree(n.getRight());
+			walktree(n.getRightNode());
 		}
 		System.out.println("+++++++++++++++++++++++++++++++++++++-");
 	}
@@ -158,8 +158,8 @@ public class TreeServiceImp implements TreeService {
 				return root;
 			  }
 	  
-			  Node leftTree=lowestCommonAncestor(searchNodeInTreeById(root.getNodeLeft()),p,q);
-			  Node rightTree=lowestCommonAncestor(searchNodeInTreeById(root.getNodeRight()),p,q);
+			  Node leftTree=lowestCommonAncestor(searchNodeInTreeById(root.getLeftKey()),p,q);
+			  Node rightTree=lowestCommonAncestor(searchNodeInTreeById(root.getRightKey()),p,q);
 	  
 			  if(leftTree!=null && rightTree!=null){
 				  return root;

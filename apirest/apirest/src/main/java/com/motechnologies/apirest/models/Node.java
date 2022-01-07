@@ -31,13 +31,13 @@ public class Node {
 	@Transient
 	@JsonIgnore
     // @OneToOne(mappedBy = "parent",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    // @JoinColumn(name = "left", referencedColumnName="ID", nullable = true)
-    private Node left;
+    // @JoinColumn(name = "leftNode", referencedColumnName="ID", nullable = true)
+    private Node leftNode;
 	@Transient
 	@JsonIgnore
     // @OneToOne(mappedBy = "parent",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    // @JoinColumn(name = "right", referencedColumnName="ID", nullable = true)
-    private Node right;
+    // @JoinColumn(name = "rightNode", referencedColumnName="ID", nullable = true)
+    private Node rightNode;
     @Column(name = "isRoot", nullable = true)
     private Boolean isRoot;
 	@JsonBackReference
@@ -47,11 +47,11 @@ public class Node {
     @Column(name = "content")
     private String content;
 
-    @Column(name = "nodeLeft")
-    private Integer nodeLeft;
+    @Column(name = "leftKey")
+    private Integer leftKey;
 
-	@Column(name = "nodeRight")
-    private Integer nodeRight;	
+	@Column(name = "rightKey")
+    private Integer rightKey;	
 
     public Integer getId() {
 		return id;
@@ -71,17 +71,17 @@ public class Node {
 	public void setParent(Node parent) {
 		this.parent = parent;
 	}
-	public Node getLeft() {
-		return left;
+	public Node getLeftNode() {
+		return leftNode;
 	}
-	public void setLeft(Node left) {
-		this.left = left;
+	public void setLeftNode(Node leftNode) {
+		this.leftNode = leftNode;
 	}
-	public Node getRight() {
-		return right;
+	public Node getRightNode() {
+		return rightNode;
 	}
-	public void setRight(Node right) {
-		this.right = right;
+	public void setRightNode(Node rightNode) {
+		this.rightNode = rightNode;
 	}
 	public Boolean getIsRoot() {
 		return isRoot;
@@ -101,20 +101,20 @@ public class Node {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public Integer getNodeLeft() {
-		return nodeLeft;
+	public Integer getLeftKey() {
+		return leftKey;
 	}
 
-	public void setNodeLeft(Integer nodeLeft) {
-		this.nodeLeft = nodeLeft;
+	public void setLeftKey(Integer leftKey) {
+		this.leftKey = leftKey;
 	}
 
-	public Integer getNodeRight() {
-		return nodeRight;
+	public Integer getRightKey() {
+		return rightKey;
 	}
 
-	public void setNodeRight(Integer nodeRight) {
-		this.nodeRight = nodeRight;
+	public void setRightKey(Integer rightKey) {
+		this.rightKey = rightKey;
 	}
 	
 }
