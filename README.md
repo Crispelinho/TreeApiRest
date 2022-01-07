@@ -123,7 +123,7 @@ El resultado de la prueba es el siguiente:
 
 ![image](https://user-images.githubusercontent.com/23733231/148381729-1637f1b5-382b-4342-861f-17b703eef15b.png)
 
-#### Revisión en la consola de H2
+###### Revisión en la consola de H2
 
 Inicio de sesión en H2
 
