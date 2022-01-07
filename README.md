@@ -60,7 +60,7 @@ Dirigirse a la carpeta del proyecto y ejecutar el siguiente comando:
 #### Linux and Mac
 > ```cd apirest```
 >  
-> ```foo@bar:~$ gradlew clean build```
+> ```foo@bar:~$ .\gradlew clean build```
 
 #### Ejecución de la aplicación con Gradle
 Desde Visual Studio Code dirigirse a la clase ApirestApplication y darle run al proyecto.
