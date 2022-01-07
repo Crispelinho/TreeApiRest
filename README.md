@@ -134,10 +134,25 @@ Verificación de datos en H2
 
 ![image](https://user-images.githubusercontent.com/23733231/148384189-61d73124-54cd-4722-a7bd-49cab4840007.png)
 
+##### Servicio para encontrar el nodo ancestro más cercano entre dos nodos un árbol ya creado.
+
+Desde Postman podemos enviar al endpoint http://localhost:8080/tree/lowestCommonAncestor/?id={idTree}&key1={nodeKey1}&key2={nodeKey2}, dónde los parámetros del servicio son descritos a continuación:
+- **idTree:** Id del árbol a consultar y dónde se va a buscar el ancestro común entre los nodos 1 y 2.
+- **nodeKey1:** Key del nodo 1 al cuál se le desea consultar su ancestro más cercano con respecto al nodo 2.
+- **nodeKey2:** Key del nodo 2 al cuál se le desea consultar su ancestro más cercano con respecto al nodo 1.
+
+Basados en el árbol anterior se realiza la prueba para los nodos 2 y 11, y se obtiene como resultado el nodo 9.
+
+![image](https://user-images.githubusercontent.com/23733231/148483662-d60b549c-b140-459e-a0a5-1e1d2a538acd.png)
+
+Basados en el árbol anterior se realiza la prueba para los nodos 2 y 8, y se obtiene como resultado el nodo 5.
+
+![image](https://user-images.githubusercontent.com/23733231/148483815-0297add3-875b-4cfb-b3f1-9d1fdfaf1877.png)
+
 ### Problemas y conclusiones
 
 Se puede apreciar que el objeto correspondiente al Arbol y sus Nodos son mapeados correctamente y así se verifican en la BD.
 
-Se presenta problemas con Spring Boot al momento de hacer relaciones recursivas, los atributos de la clase Node, left y rigth son columnas que se relaciones con la misma tabla (Node) con un tipo de relación 1 a 1, por lo tanto, en Spring se hace uso de la anotación OneToOne, la cuál no permite eliminar la recursividad en los objetos al ser serializados, por lo tanto, se pinta por consola para verificar su creación.
+Se presenta problemas con Spring Boot al momento de hacer relaciones recursivas, los atributos de la clase Node, left y rigth son columnas que se relacionan con la misma tabla (Node) con un tipo de relación 1 a 1, por lo tanto, en Spring se hace uso de la anotación OneToOne, la cuál no permite eliminar la recursividad en los objetos al ser serializados, el procedimiento se pinta por consola para verificar su creación y resultado se observa como respuesta al servicio tree/ (POST).
 
-El tipo de relación 1 a 1 con la misma tabla no permite crear las columnas a nivel de base de datos, por lo tanto, los atributos left y right se enmarcan bajo la eqtiqueta @Transient para ser omitidos en la capa de persistencia y evite problemas de duplicidad de registros al momento de consultar un arbol, de igual forma se utiliza la anotación @JsonIgnore para eliminar la recursividad infinita al momento de consultar un nodo.
+El tipo de relación 1 a 1 con la misma tabla no permite crear las columnas a nivel de base de datos, por lo tanto, los atributos left y right se enmarcan bajo la etiqueta @Transient para ser omitidos en la capa de persistencia y evitar así problemas de duplicidad en registros al momento de consultar los nodos de un arbol, de igual forma se utiliza la anotación @JsonIgnore para eliminar la recursividad infinita al momento de consultar un nodo.
