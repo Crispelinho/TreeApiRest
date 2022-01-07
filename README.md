@@ -2,6 +2,8 @@
 
 Proyecto Gradle
 
+[![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
+
 Aplicación desarrollada con el framework Spring Boot implementando el patrón de diseño de repositorio, dándole al proyecto la siguiente estructura:
 
 ```bash
